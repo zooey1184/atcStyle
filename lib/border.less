@@ -1,0 +1,106 @@
+/** @format */
+
+.borderLoop (@i) when (@i >=0) {
+  .border-@{i} {
+    border-width: @i + 0px;
+  }
+  .border-l-@{i} {
+    border-left-width: @i + 0px;
+  }
+  .border-r-@{i} {
+    border-right-width: @i + 0px;
+  }
+  .border-t-@{i} {
+    border-top-width: @i + 0px;
+  }
+  .border-b-@{i} {
+    border-bottom-width: @i + 0px;
+  }
+  .border-x-@{i} {
+    border-top-width: @i + 0px;
+    border-bottom-width: @i + 0px;
+  }
+  .border-y-@{i} {
+    border-right-width: @i + 0px;
+    border-left-width: @i + 0px;
+  }
+  .borderLoop(@i - 1);
+}
+
+.roundedLoop (@i) when (@i >= 0) {
+  .rounded-@{i} {
+    border-radius: @i + 0px;
+  }
+  .rounded-tl-@{i} {
+    border-top-left-radius: @i + 0px;
+  }
+  .rounded-tr-@{i} {
+    border-top-right-radius: @i + 0px;
+  }
+  .rounded-bl-@{i} {
+    border-bottom-left-radius: @i + 0px;
+  }
+  .rounded-br-@{i} {
+    border-bottom-right-radius: @i + 0px;
+  }
+  .rounded-l-@{i} {
+    border-top-left-radius: @i + 0px;
+    border-bottom-left-radius: @i + 0px;
+  }
+  .rounded-r-@{i} {
+    border-top-right-radius: @i + 0px;
+    border-bottom-right-radius: @i + 0px;
+  }
+  .rounded-t-@{i} {
+    border-top-right-radius: @i + 0px;
+    border-top-left-radius: @i + 0px;
+  }
+  .rounded-b-@{i} {
+    border-bottom-right-radius: @i + 0px;
+    border-bottom-left-radius: @i + 0px;
+  }
+  .roundedLoop (@i - 2);
+}
+
+body {
+  .rounded-full {
+    border-radius: 9999px;
+  }
+  .rounded-l-full {
+    border-top-left-radius: 9999px;
+    border-bottom-left-radius: 9999px;
+  }
+  .rounded-r-full {
+    border-top-right-radius: 9999px;
+    border-bottom-right-radius: 9999px;
+  }
+  .rounded-t-full {
+    border-top-left-radius: 9999px;
+    border-top-right-radius: 9999px;
+  }
+  .rounded-b-full {
+    border-bottom-left-radius: 9999px;
+    border-bottom-right-radius: 9999px;
+  }
+  .border-none {
+    border-style: none;
+  }
+  .border-solid {
+    border-width: 0px;
+    border-style: solid;
+  }
+  .border-dashed {
+    border-width: 0px;
+    border-style: dashed;
+  }
+  .border-dotted {
+    border-width: 0px;
+    border-style: dotted;
+  }
+  .border-double {
+    border-width: 0px;
+    border-style: double;
+  }
+  .borderLoop(4);
+  .roundedLoop(16);
+}

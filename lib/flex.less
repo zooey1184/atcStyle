@@ -1,0 +1,61 @@
+/** @format */
+
+.flex {
+  display: flex;
+}
+.flex-wrap {
+  flex-wrap: wrap;
+}
+.flex-col {
+  flex-direction: column;
+}
+.flex-col-reverse {
+  flex-direction: column-reverse;
+  -webkit-flex-direction: column-reverse;
+}
+.flex-reverse {
+  flex-direction: row-reverse;
+  -webkit-flex-direction: row-reverse;
+}
+.items-center {
+  align-items: center;
+}
+.items-start {
+  align-items: flex-start;
+}
+.items-end {
+  align-items: flex-end;
+}
+.items-stretch {
+  align-items: stretch;
+}
+// justify
+.justify-between {
+  justify-content: space-between;
+}
+.justify-start {
+  justify-content: flex-start;
+}
+.justify-center {
+  justify-content: center;
+}
+.justify-end {
+  justify-content: flex-end;
+}
+.justify-around {
+  justify-content: space-around;
+}
+
+.flex-0 {
+  flex-shrink: 0;
+}
+.flex-1 {
+  flex-grow: 1;
+}
+.flexLoop(@i) when (@i > 0) {
+  .flex-@{i} {
+    flex-grow: @i;
+  }
+  .flexLoop(@i - 1);
+}
+.flexLoop(12);

@@ -1,0 +1,10 @@
+/** @format */
+
+.opacityLoop (@i) when (@i >= 0) {
+  .opacity-@{i} {
+    opacity: calc(@i / 100);
+  }
+  .opacityLoop(@i - 10);
+}
+
+.opacityLoop(100);

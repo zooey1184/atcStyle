@@ -1,0 +1,121 @@
+/** @format */
+
+.positionCount(@i) when (@i >= 0) {
+  .bottom-@{i} {
+    bottom: @i + 0px;
+  }
+  .top-@{i} {
+    top: @i + 0px;
+  }
+  .left-@{i} {
+    left: @i + 0px;
+  }
+  .right-@{i} {
+    right: @i + 0px;
+  }
+  .positionCount(@i - 8);
+}
+.positionCountBig(@i) when (@i >= 50) {
+  .bottom-@{i} {
+    bottom: @i + 0px;
+  }
+  .top-@{i} {
+    top: @i + 0px;
+  }
+  .left-@{i} {
+    left: @i + 0px;
+  }
+  .right-@{i} {
+    right: @i + 0px;
+  }
+  .positionCountBig(@i - 50);
+}
+.positionCountP(@i) when (@i >= 0) {
+  .bottom-@{i}p {
+    bottom: @i + 0%;
+  }
+  .top-@{i}p {
+    top: @i + 0%;
+  }
+  .left-@{i}p {
+    left: @i + 0%;
+  }
+  .right-@{i}p {
+    right: @i + 0%;
+  }
+  .bottom-@{i}vw {
+    bottom: @i + 0vw;
+  }
+  .top-@{i}vw {
+    top: @i + 0vw;
+  }
+  .left-@{i}vw {
+    left: @i + 0vw;
+  }
+  .right-@{i}vw {
+    right: @i + 0vw;
+  }
+
+  .bottom-@{i}vh {
+    bottom: @i + 0vh;
+  }
+  .top-@{i}vh {
+    top: @i + 0vw;
+  }
+  .left-@{i}vh {
+    left: @i + 0vh;
+  }
+  .right-@{i}vh {
+    right: @i + 0vh;
+  }
+  .positionCountP(@i - 5);
+}
+
+body {
+  // 小于50 以8为倍数
+  .positionCount(48);
+  // 大于50 以50为阶梯
+  .positionCountBig(400);
+  // 百分制以5为级别  支持百分比  vw vh
+  .positionCountP(100);
+  .inline-block {
+    display: inline-block;
+  }
+  .block {
+    display: block;
+  }
+  .inline {
+    display: inline;
+  }
+  .none {
+    display: none;
+  }
+  .hidden {
+    visibility: hidden;
+  }
+
+  .relative {
+    position: relative;
+  }
+  .pos-r {
+    position: relative;
+  }
+  .pos-a {
+    position: absolute;
+  }
+  .sticky {
+    position: sticky;
+  }
+  .pos-f {
+    position: fixed;
+  }
+  .float-left {
+    float: left;
+  }
+  .float-right {
+    float: right;
+  }
+  .clear {
+    clear: both;
+  }
+}

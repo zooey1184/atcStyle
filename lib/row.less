@@ -1,0 +1,53 @@
+/** @format */
+
+// col前缀名 算命名空间吧
+@col: col;
+[class*='col-'] {
+  float: left;
+  min-height: 1px;
+}
+@step: 24;
+
+.row {
+  &::before,
+  &::after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+
+  // Bootstrap 栅格布局
+  @screen-xl: @screen-sm - 1px;
+  @screen-sm: 768px;
+  @screen-md: 992px;
+  @screen-md-bigger: @screen-md + 1px;
+  @screen-lg: 1200px;
+  @screen-lg-bigger: @screen-lg + 1px;
+
+  // 响应式: [type] xs sm md lg
+  .col-loop(@i, @type) when (@i > 0) {
+    .@{col}-@{type}-@{i} {
+      width: calc(100% / (@step / @i));
+    }
+    .col-loop(@i - 1, @type);
+  }
+  @media (max-width: @screen-xl) {
+    .col-loop(@step, xs);
+  }
+  @media (min-width: @screen-sm) and (max-width: @screen-md) {
+    .col-loop(@step, sm);
+  }
+  @media (min-width: @screen-md-bigger) and (max-width: @screen-lg) {
+    .col-loop(@step, md);
+  }
+  @media (min-width: @screen-lg-bigger) {
+    .col-loop(@step, lg);
+  }
+  .col-loop_n(@i) when (@i > 0) {
+    .@{col}-@{i} {
+      width: calc(100% / (@step / @i));
+    }
+    .col-loop_n(@i - 1);
+  }
+  .col-loop_n(@step);
+}

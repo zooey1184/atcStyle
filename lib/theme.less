@@ -1,0 +1,129 @@
+/** @format */
+
+@colors: {
+  white: #fff;
+  blue: #1890ff;
+  red: #f5222d;
+  lime: #a0d911;
+  gold: #faad14;
+  yellow: #fadb14;
+  orange: #fa8c16;
+  green: #52c41a;
+  cyan: #13c2c2;
+  purple: #722ed1;
+  gray: #bfbfbf;
+  grey: #f2f5fa;
+  black: #141414;
+};
+@deep: 30%;
+
+body {
+  each(@colors, {
+    .color-@{key} {
+      color:  @value;
+    }
+    // 背景色
+    .bg-@{key} {
+      background-color: @value
+    }
+    // 边框色
+    .border-@{key} {
+      border-color: @value
+    }
+    .border-l-@{key} {
+      border-left-color: @value
+    }
+    .border-r-@{key} {
+      border-right-color: @value
+    }
+    .border-t-@{key} {
+      border-top-color: @value
+    }
+    .border-b-@{key} {
+      border-bottom-color: @value
+    }
+    .border-x-@{key} {
+      border-top-color: @value;
+      border-bottom-color: @value
+    }
+    .border-y-@{key} {
+      border-left-color: @value;
+      border-right-color: @value
+    }
+    // 深色
+    // .color-dark-@{key} {
+    //   color: darken(@value, @deep)
+    // }
+    .bg-dark-@{key} {
+      background-color: darken(@value, @deep)
+    }
+    // .border-dark-@{key} {
+    //   border-color: darken(@value, @deep);
+    // }
+    // .border-l-dark-@{key} {
+    //   border-left-color: darken(@value, @deep);
+    // }
+    // .border-r-dark-@{key} {
+    //   border-left-color: darken(@value, @deep);
+    // }
+    // .border-t-dark-@{key} {
+    //   border-top-color: darken(@value, @deep);
+    // }
+    // .border-b-dark-@{key} {
+    //   border-top-color: darken(@value, @deep);
+    // }
+    // .border-x-dark-@{key} {
+    //   border-top-color: darken(@value, @deep);
+    //   border-bottom-color: darken(@value, @deep);
+    // }
+    // .border-y-dark-@{key} {
+    //   border-left-color: darken(@value, @deep);
+    //   border-right-color: darken(@value, @deep);
+    // }
+    // 浅色
+    // .color-light-@{key} {
+    //   color: lighten(@value, @deep)
+    // }
+    .bg-light-@{key} {
+      background-color: lighten(@value, @deep)
+    }
+    // .border-light-@{key} {
+    //   border-color: lighten(@value, @deep);
+    // }
+    // .border-l-light-@{key} {
+    //   border-left-color: lighten(@value, @deep);
+    // }
+    // .border-r-light-@{key} {
+    //   border-left-color: lighten(@value, @deep);
+    // }
+    // .border-t-light-@{key} {
+    //   border-top-color: lighten(@value, @deep);
+    // }
+    // .border-b-light-@{key} {
+    //   border-top-color: lighten(@value, @deep);
+    // }
+    // .border-x-light-@{key} {
+    //   border-top-color: lighten(@value, @deep);
+    //   border-bottom-color: lighten(@value, @deep);
+    // }
+    // .border-y-light-@{key} {
+    //   border-left-color: lighten(@value, @deep);
+    //   border-right-color: lighten(@value, @deep);
+    // }
+
+    // 透明度
+    .loopFade(@i) when (@i >= 0) {
+      .bg-@{key}-@{i} {
+        background-color: fadeout(@value, 100% - @i)
+      }
+      .loopFade(@i - 10)
+    }
+    .hover-shadow-@{key} {
+      transition: all 100ms linear;
+      &:hover {
+        box-shadow:  0 10px 15px -3px fadeout(@value, 70%), 0 4px 6px -4px fadeout(@value, 70%);
+      }
+    }
+    .loopFade(100);
+  });
+}

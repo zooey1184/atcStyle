@@ -1,0 +1,84 @@
+/** @format */
+
+@pos: {
+  l: left;
+  r: right;
+  t: top;
+  b: bottom;
+};
+
+.mpLoop (@i) when (@i >=0) {
+  .p-@{i} {
+    padding: @i + 0px;
+  }
+  .px-@{i} {
+    padding-left: @i + 0px;
+    padding-right: @i + 0px;
+  }
+  .py-@{i} {
+    padding-top: @i + 0px;
+    padding-bottom: @i + 0px;
+  }
+  each(@pos, {
+    .p@{key}-@{i} {
+      padding-@{value}: @i + 0px
+    };
+    .m@{key}-@{i} {
+      margin-@{value}: @i + 0px
+    }
+    .p@{key}-@{i}p {
+      padding-@{value}: @i + 0%;
+    };
+    .m@{key}-@{i}p {
+      margin-@{value}: @i + 0%;
+    }
+  });
+
+  .m-@{i} {
+    margin: @i + 0px;
+  }
+  .mx-@{i} {
+    margin-left: @i + 0px;
+    margin-right: @i + 0px;
+  }
+  .my-@{i} {
+    margin: @i + 0px auto;
+  }
+  .mpLoop(@i - 8);
+}
+
+.wloop (@i) when (@i > 0) {
+  .w-@{i} {
+    width: @i + 0px;
+  }
+  .h-@{i} {
+    height: @i + 0px;
+  }
+  .w-@{i}p {
+    width: @i + 0%;
+  }
+  .h-@{i}p {
+    height: @i + 0%;
+  }
+  .w-@{i}vw {
+    width: @i + 0vw;
+  }
+  .w-@{i}vh {
+    width: @i + 0vh;
+  }
+  .h-@{i}vh {
+    height: @i + 0vh;
+  }
+  .h-@{i}vw {
+    height: @i + 0vw;
+  }
+  .wloop(@i - 5);
+}
+
+body {
+  .border-box {
+    box-sizing: border-box;
+  }
+  .mpLoop(64);
+  .wloop(100);
+}
